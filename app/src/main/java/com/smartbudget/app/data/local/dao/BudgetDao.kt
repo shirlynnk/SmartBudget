@@ -1,8 +1,9 @@
-package com.smartbudget.tempbudget.database
+package com.smartbudget.app.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.smartbudget.app.data.local.entity.Budget
 
 @Dao
 interface BudgetDao {

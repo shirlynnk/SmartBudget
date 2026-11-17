@@ -1,9 +1,15 @@
-package com.smartbudget.tempbudget.database
+package com.smartbudget.app.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.smartbudget.app.data.local.dao.BudgetDao
+import com.smartbudget.app.data.local.dao.CategoryDao
+import com.smartbudget.app.data.local.dao.ExpenseDao
+import com.smartbudget.app.data.local.entity.Budget
+import com.smartbudget.app.data.local.entity.Category
+import com.smartbudget.app.data.local.entity.Expense
 
 @Database(entities = [Expense::class, Budget::class, Category::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

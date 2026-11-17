@@ -1,9 +1,10 @@
-package com.smartbudget.tempbudget
+package com.smartbudget.app
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.smartbudget.tempbudget.database.Expense
+import com.smartbudget.app.data.local.entity.Expense
+import com.smartbudget.app.data.repository.ExpenseRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

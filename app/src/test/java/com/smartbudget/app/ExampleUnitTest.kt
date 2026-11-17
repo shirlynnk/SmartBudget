@@ -1,4 +1,4 @@
-package com.smartbudget.tempbudget
+package com.smartbudget.app
 
 import org.junit.Test
 

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.smartbudget.tempbudget"
+    namespace = "com.smartbudget.app"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.smartbudget.tempbudget"
+        applicationId = "com.smartbudget.app"
         minSdk = 24
         targetSdk = 37
         versionCode = 1
