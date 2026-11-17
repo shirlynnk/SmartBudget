@@ -1,4 +1,4 @@
-package com.smartbudget.tempbudget
+package com.smartbudget.app
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.smartbudget.tempbudget.database.Expense
+import com.smartbudget.app.data.local.entity.Expense
 import java.util.Locale
 
 class ExpenseAdapter : ListAdapter<Expense, ExpenseAdapter.ExpenseViewHolder>(ExpenseDiffCallback()) {

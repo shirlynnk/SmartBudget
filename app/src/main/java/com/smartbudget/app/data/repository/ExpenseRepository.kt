@@ -1,7 +1,7 @@
-package com.smartbudget.tempbudget
+package com.smartbudget.app.data.repository
 
-import com.smartbudget.tempbudget.database.Expense
-import com.smartbudget.tempbudget.database.ExpenseDao
+import com.smartbudget.app.data.local.dao.ExpenseDao
+import com.smartbudget.app.data.local.entity.Expense
 
 class ExpenseRepository(private val expenseDao: ExpenseDao) {
 

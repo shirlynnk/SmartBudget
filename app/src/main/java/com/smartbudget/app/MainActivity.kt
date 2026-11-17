@@ -1,4 +1,4 @@
-package com.smartbudget.tempbudget
+package com.smartbudget.app
 
 import android.os.Bundle
 import android.widget.Button
@@ -11,8 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.smartbudget.tempbudget.database.AppDatabase
-import com.smartbudget.tempbudget.database.Expense
+import com.smartbudget.app.data.local.AppDatabase
+import com.smartbudget.app.data.local.entity.Expense
+import com.smartbudget.app.data.repository.ExpenseRepository
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
