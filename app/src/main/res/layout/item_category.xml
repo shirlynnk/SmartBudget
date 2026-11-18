@@ -15,15 +15,14 @@
 
     <Button
         android:id="@+id/btnRename"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rename" />
 
     <Button
         android:id="@+id/btnDelete"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="Delete" />
 </LinearLayout>
