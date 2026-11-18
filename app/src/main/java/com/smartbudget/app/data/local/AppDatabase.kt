@@ -11,7 +11,7 @@ import com.smartbudget.app.data.local.entity.Budget
 import com.smartbudget.app.data.local.entity.Category
 import com.smartbudget.app.data.local.entity.Expense
 
-@Database(entities = [Expense::class, Budget::class, Category::class], version = 1)
+@Database(entities = [Expense::class, Budget::class, Category::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun expenseDao(): ExpenseDao
@@ -28,8 +28,10 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
+
                     "smartbudget_database"
-                ).build()
+                ).fallbackToDestructiveMigration(dropAllTables=true)
+                    .build()
                 INSTANCE = instance
                 instance
             }
