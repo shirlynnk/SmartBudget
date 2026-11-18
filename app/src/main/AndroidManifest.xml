@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ManageCategoriesActivity"
+            android:exported="false"
+            android:label="Manage Categories"/>
     </application>
 
 </manifest>
