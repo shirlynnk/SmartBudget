@@ -3,4 +3,8 @@
         <string name="hint_item_name">Item Name (e.g., Groceries)</string>
         <string name="hint_amount">Amount (e.g., 1500.00)</string>
         <string name="btn_save_expense">Save Expense</string>
+        <string name="budget_not_set">No budget set yet</string>
+        <string name="hint_budget">Monthly budget</string>
+        <string name="btn_save_budget">Save budget</string>
+        <string name="budget_saved">Budget saved</string>
 </resources>
