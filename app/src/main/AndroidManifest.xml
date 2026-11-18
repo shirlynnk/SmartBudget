@@ -24,6 +24,11 @@
         <activity android:name=".ManageCategoriesActivity"
             android:exported="false"
             android:label="Manage Categories"/>
+
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false"
+            android:label="Dashboard" />
     </application>
 
 </manifest>
