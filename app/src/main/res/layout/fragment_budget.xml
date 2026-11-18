@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Shows the current saved budget -->
+    <TextView
+        android:id="@+id/tvCurrentBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/budget_not_set"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- The box where the user types the amount; the red error message shows here -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/hint_budget">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBudget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal|numberSigned" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSaveBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/btn_save_budget" />
+</LinearLayout>
