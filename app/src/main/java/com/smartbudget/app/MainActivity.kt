@@ -22,6 +22,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.smartbudget.app.data.local.AppDatabase
+import com.smartbudget.app.data.local.entity.Expense
+import com.smartbudget.app.data.repository.ExpenseRepository
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
