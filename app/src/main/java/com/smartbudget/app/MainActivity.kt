@@ -28,7 +28,6 @@ import com.smartbudget.app.data.repository.ExpenseRepository
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: ExpenseViewModel
@@ -49,11 +48,7 @@ class MainActivity : AppCompatActivity() {
         checkNotificationPermissionAndSchedule()
         fetchExchangeRates()
 
-
-
         val db = AppDatabase.getDatabase(applicationContext)
-
-
         val expenseRepository = ExpenseRepository(db.expenseDao())
         val expenseFactory = ExpenseViewModelFactory(expenseRepository)
         viewModel = ViewModelProvider(this, expenseFactory)[ExpenseViewModel::class.java]
@@ -110,11 +105,6 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         viewModel.loadExpenses()
     }
-
-
-
-
-
 
     private fun showDeleteConfirmationDialog(expense: Expense) {
         AlertDialog.Builder(this)
