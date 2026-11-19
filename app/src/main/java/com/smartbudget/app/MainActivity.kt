@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         // 2. Bind UI Views
         val btnAddExpense = findViewById<Button>(R.id.btnAddExpense)
         val btnManage = findViewById<Button>(R.id.btnManageCategories)
+        val btnDashboard = findViewById<Button>(R.id.btnDashboard)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewExpenses)
         val tvEmpty = findViewById<TextView>(R.id.tvEmptyExpenses)
 
@@ -61,6 +62,10 @@ class MainActivity : AppCompatActivity() {
 
         btnManage.setOnClickListener {
             startActivity(Intent(this, ManageCategoriesActivity::class.java))
+        }
+
+        btnDashboard.setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
         }
 
         // 5. Observe Database Changes & Toggle Empty State
