@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">TempBudget</string>
+        <string name="app_name">SmartBudget</string>
+        <string name="hint_item_name">Item Name (e.g., Groceries)</string>
+        <string name="hint_amount">Amount (e.g., 1500.00)</string>
+        <string name="btn_save_expense">Save Expense</string>
 </resources>

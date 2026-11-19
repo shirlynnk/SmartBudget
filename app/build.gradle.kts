@@ -1,20 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.legacy.kapt)
 }
 
 android {
-    namespace = "com.smartbudget.tempbudget"
-    compileSdk {
-        version = release(37)
-    }
+    namespace = "com.smartbudget.app"
+    compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.smartbudget.tempbudget"
+        applicationId = "com.smartbudget.app"
         minSdk = 24
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,13 +29,21 @@ android {
     }
 }
 
-dependencies {
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
-}
+    dependencies {
+
+            implementation(libs.androidx.activity.ktx)
+            implementation(libs.androidx.appcompat)
+            implementation(libs.androidx.constraintlayout)
+            implementation(libs.androidx.core.ktx)
+            implementation(libs.material)
+            testImplementation(libs.junit)
+            androidTestImplementation(libs.androidx.espresso.core)
+            androidTestImplementation(libs.androidx.junit)
+        implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+        implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+
+        implementation(libs.androidx.room.runtime)
+        implementation(libs.androidx.room.ktx)
+        kapt(libs.androidx.room.compiler)
+
+    }
