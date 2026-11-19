@@ -26,6 +26,12 @@
             android:label="Manage Categories"/>
 
         <activity
+            android:name=".AddEditExpenseActivity"
+            android:exported="false"
+            android:label="Add Expense"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
             android:name=".DashboardActivity"
             android:exported="false"
             android:label="Dashboard" />
