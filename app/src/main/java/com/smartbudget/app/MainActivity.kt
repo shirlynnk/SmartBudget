@@ -1,27 +1,45 @@
 package com.smartbudget.app
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.smartbudget.app.data.local.AppDatabase
 import com.smartbudget.app.data.local.entity.Expense
 import com.smartbudget.app.data.repository.ExpenseRepository
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: ExpenseViewModel
     private lateinit var adapter: ExpenseAdapter
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            scheduleDailyReminder()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,11 +101,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        // 6. Member 5 Features: WorkManager Reminder & Retrofit API
+        checkNotificationPermissionAndSchedule()
+        fetchExchangeRates()
     }
 
     override fun onResume() {
         super.onResume()
-        // Refresh list when returning from AddEditExpenseActivity
         viewModel.loadExpenses()
     }
 
@@ -100,5 +121,45 @@ class MainActivity : AppCompatActivity() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+    }
+
+    private fun checkNotificationPermissionAndSchedule() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    scheduleDailyReminder()
+                }
+                else -> {
+                    requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+        } else {
+            scheduleDailyReminder()
+        }
+    }
+
+    private fun scheduleDailyReminder() {
+        val reminderRequest = PeriodicWorkRequestBuilder<ReminderWorker>(1, TimeUnit.DAYS)
+            .build()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "DailyExpenseReminder",
+            ExistingPeriodicWorkPolicy.KEEP,
+            reminderRequest
+        )
+    }
+
+    private fun fetchExchangeRates() {
+        lifecycleScope.launch {
+            try {
+                val response = RetrofitClient.instance.getLatestRates("USD")
+                Log.d("SmartBudgetAPI", "Base: ${response.base}, Date: ${response.date}, Rates: ${response.rates}")
+            } catch (e: Exception) {
+                Log.e("SmartBudgetAPI", "Failed to fetch exchange rates", e)
+            }
+        }
     }
 }
