@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="dash_green">#2E7D32</color>
-    <color name="dash_orange">#EF6C00</color>
-    <color name="dash_red">#C62828</color>
-    <color name="dash_outline">#33808080</color>
+    <color name="chart_track">#354C54</color>
+    <color name="chart_blue">#5CBBC2</color>
+    <color name="chart_amber">#F2AE58</color>
+    <color name="chart_mint">#9BC9CB</color>
+    <color name="chart_red">#F07870</color>
 </resources>

@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="obsidian_background">#13191D</color>
+    <color name="card_background">#26343B</color>
+    <color name="deep_teal">#328C89</color>
+    <color name="turquoise">#83C6BD</color>
+    <color name="obsidian_text">#E7F0EF</color>
+    <color name="drawer_track">#52616A</color>
+    <color name="dashboard_divider">#3A83C6BD</color>
 </resources>

@@ -1,9 +1,48 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.TempBudget" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="TextAppearance.SmartBudget" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="TextAppearance.SmartBudget.PageTitle">
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">-0.015</item>
+    </style>
+
+    <style name="TextAppearance.SmartBudget.SectionTitle">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="TextAppearance.SmartBudget.ToolbarTitle">
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.SmartBudget.Kicker">
+        <item name="android:fontFamily">sans-serif-condensed-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.14</item>
+    </style>
+
+    <style name="TextAppearance.SmartBudget.Body">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="Base.Theme.TempBudget" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="colorPrimary">@color/deep_teal</item>
+        <item name="colorPrimaryDark">@color/obsidian_background</item>
+        <item name="colorOnPrimary">@color/obsidian_text</item>
+        <item name="colorSecondary">@color/turquoise</item>
+        <item name="colorOnSecondary">@color/obsidian_background</item>
+        <item name="colorSurface">@color/card_background</item>
+        <item name="colorOnSurface">@color/obsidian_text</item>
+        <item name="android:windowBackground">@color/obsidian_background</item>
+        <item name="android:statusBarColor">@color/obsidian_background</item>
+        <item name="android:navigationBarColor">@color/obsidian_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
     <style name="Theme.TempBudget" parent="Base.Theme.TempBudget" />
 </resources>

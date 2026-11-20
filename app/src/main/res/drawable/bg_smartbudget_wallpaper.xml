@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Deep teal base -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="270"
+                android:startColor="#031216"
+                android:centerColor="#09252B"
+                android:endColor="#061419"/>
+        </shape>
+    </item>
+
+    <!-- Large turquoise atmospheric glow -->
+    <item
+        android:width="300dp"
+        android:height="300dp"
+        android:gravity="top|end"
+        android:right="-90dp"
+        android:top="25dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="150dp"
+                android:centerColor="#5530D5D0"
+                android:endColor="#0030D5D0"/>
+        </shape>
+    </item>
+
+    <!-- Lower left glow -->
+    <item
+        android:width="260dp"
+        android:height="260dp"
+        android:gravity="bottom|start"
+        android:left="-110dp"
+        android:bottom="120dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="130dp"
+                android:centerColor="#33328C89"
+                android:endColor="#00328C89"/>
+        </shape>
+    </item>
+
+    <!-- Decorative financial patterns -->
+    <item android:drawable="@drawable/bg_fintech_pattern"/>
+
+</layer-list>

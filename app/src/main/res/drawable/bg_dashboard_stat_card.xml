@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Translucent glass base (approx 75-80% opacity) -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="20dp" />
+            <gradient
+                android:angle="270"
+                android:centerColor="#B30D252E"
+                android:endColor="#B308191F"
+                android:startColor="#CC16444F"
+                android:type="linear" />
+            <stroke
+                android:width="1dp"
+                android:color="#6630D5D0" />
+        </shape>
+    </item>
+
+    <!-- Top soft turquoise radial glow -->
+    <item
+        android:width="110dp"
+        android:height="110dp"
+        android:gravity="top|center_horizontal"
+        android:top="-45dp">
+        <shape android:shape="oval">
+            <gradient
+                android:centerColor="#3830D5D0"
+                android:endColor="#0030D5D0"
+                android:gradientRadius="55dp"
+                android:type="radial" />
+        </shape>
+    </item>
+
+</layer-list>

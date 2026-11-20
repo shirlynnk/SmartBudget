@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.smartbudget.app.data.repository.BudgetRepository
+import com.smartbudget.app.data.repository.ExpenseRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,11 +17,17 @@ sealed class BudgetUiState {
     data class Error(val message: String) : BudgetUiState()
 }
 
-class BudgetViewModel(private val repository: BudgetRepository) : ViewModel() {
+class BudgetViewModel(
+    private val repository: BudgetRepository,
+    private val expenseRepository: ExpenseRepository
+) : ViewModel() {
 
     // The current saved budget (null means none set yet)
     private val _budgetAmount = MutableStateFlow<Double?>(null)
     val budgetAmount: StateFlow<Double?> = _budgetAmount.asStateFlow()
+
+    private val _totalSpent = MutableStateFlow(0.0)
+    val totalSpent: StateFlow<Double> = _totalSpent.asStateFlow()
 
     // Tells the screen whether to show an error or "saved"
     private val _uiState = MutableStateFlow<BudgetUiState>(BudgetUiState.Idle)
@@ -32,6 +39,7 @@ class BudgetViewModel(private val repository: BudgetRepository) : ViewModel() {
 
     fun loadBudget() = viewModelScope.launch {
         _budgetAmount.value = repository.getBudgetAmount()
+        _totalSpent.value = expenseRepository.getAllExpenses().sumOf { it.amount }
     }
 
     // Validates the text typed by the user, then saves it
@@ -41,7 +49,7 @@ class BudgetViewModel(private val repository: BudgetRepository) : ViewModel() {
 
         val error = when {
             text.isEmpty() -> "Please enter a budget amount"
-            amount == null -> "Enter a valid number"
+            amount == null || !amount.isFinite() -> "Enter a valid number"
             amount == 0.0 -> "Budget cannot be zero"
             amount < 0 -> "Budget cannot be negative"
             else -> null
@@ -66,12 +74,13 @@ class BudgetViewModel(private val repository: BudgetRepository) : ViewModel() {
 
 // Builds the ViewModel and hands it the repository (same pattern as ExpenseViewModelFactory)
 class BudgetViewModelFactory(
-    private val repository: BudgetRepository
+    private val repository: BudgetRepository,
+    private val expenseRepository: ExpenseRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(BudgetViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return BudgetViewModel(repository) as T
+            return BudgetViewModel(repository, expenseRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

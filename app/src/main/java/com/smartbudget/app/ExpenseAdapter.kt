@@ -29,7 +29,9 @@ class ExpenseAdapter(
         fun bind(expense: Expense) {
             tvItemName.text = expense.itemName
             tvCategoryName.text = expense.categoryName.ifEmpty { "Uncategorized" }
-            tvAmount.text = String.format(Locale.getDefault(), "%.2f", expense.amount)
+            tvAmount.text = String.format(Locale.getDefault(), "KSh %,.2f", expense.amount)
+            itemView.findViewById<TextView>(R.id.tvExpenseIcon).text =
+                expense.categoryName.firstOrNull()?.uppercaseChar()?.toString() ?: "•"
 
             itemView.setOnClickListener { onItemClick(expense) }
             btnDelete.setOnClickListener { onDeleteClick(expense) }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="MAIN MENU">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/nav_dashboard" android:checkable="true" android:icon="@android:drawable/ic_menu_view" android:title="Dashboard" />
+                <item android:id="@+id/nav_expenses" android:checkable="true" android:icon="@android:drawable/ic_menu_agenda" android:title="Expenses" />
+                <item android:id="@+id/nav_budget" android:checkable="true" android:icon="@android:drawable/ic_menu_myplaces" android:title="My Budget" />
+                <item android:id="@+id/nav_categories" android:checkable="true" android:icon="@android:drawable/ic_menu_sort_by_size" android:title="Categories" />
+                <item android:id="@+id/nav_reports" android:checkable="true" android:icon="@android:drawable/ic_menu_info_details" android:title="Reports" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="TOOLS &amp; SERVICES">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/nav_exchange_rates" android:checkable="true" android:icon="@android:drawable/ic_menu_rotate" android:title="Exchange Rates" />
+                <item android:id="@+id/nav_reminders" android:checkable="true" android:icon="@android:drawable/ic_popup_reminder" android:title="Reminders" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="PREFERENCES">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/nav_settings" android:checkable="true" android:icon="@android:drawable/ic_menu_preferences" android:title="Settings" />
+            </group>
+        </menu>
+    </item>
+</menu>

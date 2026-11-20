@@ -12,4 +12,7 @@ interface BudgetDao {
 
     @Query("SELECT * FROM budgets")
     suspend fun getAllBudgets(): List<Budget>
+
+    @Query("DELETE FROM budgets")
+    suspend fun deleteAllBudgets()
 }

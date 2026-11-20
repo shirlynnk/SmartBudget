@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="800dp"
+    android:viewportWidth="360"
+    android:viewportHeight="800">
+
+    <!-- Large decorative circular rings -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M290,90 m-95,0 a95,95 0,1 0,190 0 a95,95 0,1 0,-190 0"
+        android:strokeColor="#20D5D0"
+        android:strokeAlpha="0.42"
+        android:strokeWidth="2"/>
+
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M290,90 m-70,0 a70,70 0,1 0,140 0 a70,70 0,1 0,-140 0"
+        android:strokeColor="#83C6BD"
+        android:strokeAlpha="0.35"
+        android:strokeWidth="1.5"/>
+
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M290,90 m-45,0 a45,45 0,1 0,90 0 a45,45 0,1 0,-90 0"
+        android:strokeColor="#20D5D0"
+        android:strokeAlpha="0.30"
+        android:strokeWidth="1.2"/>
+
+    <!-- Flowing decorative curves -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M-30,290 C60,220 110,350 200,275 C260,225 300,220 390,260"
+        android:strokeColor="#20D5D0"
+        android:strokeAlpha="0.40"
+        android:strokeWidth="2"/>
+
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M-30,310 C60,240 110,370 200,295 C260,245 300,240 390,280"
+        android:strokeColor="#83C6BD"
+        android:strokeAlpha="0.32"
+        android:strokeWidth="1.5"/>
+
+    <!-- Decorative financial growth bars -->
+    <path
+        android:fillColor="#20D5D0"
+        android:fillAlpha="0.28"
+        android:pathData="M235,510 L253,510 L253,590 L235,590 Z
+                          M262,480 L280,480 L280,590 L262,590 Z
+                          M289,445 L307,445 L307,590 L289,590 Z
+                          M316,405 L334,405 L334,590 L316,590 Z"/>
+
+    <!-- Growth trend line -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M230,500 L260,470 L286,440 L312,415 L342,375"
+        android:strokeColor="#20D5D0"
+        android:strokeAlpha="0.48"
+        android:strokeWidth="2.5"/>
+
+    <!-- Decorative coin circles -->
+    <path
+        android:fillColor="#328C89"
+        android:fillAlpha="0.30"
+        android:pathData="M40,570 m-28,0 a28,28 0,1 0,56 0 a28,28 0,1 0,-56 0"/>
+
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M40,570 m-20,0 a20,20 0,1 0,40 0 a20,20 0,1 0,-40 0"
+        android:strokeColor="#83C6BD"
+        android:strokeAlpha="0.45"
+        android:strokeWidth="1.5"/>
+
+    <path
+        android:fillColor="#20D5D0"
+        android:fillAlpha="0.28"
+        android:pathData="M40,570 m-8,0 a8,8 0,1 0,16 0 a8,8 0,1 0,-16 0"/>
+
+    <!-- Floating decorative particles -->
+    <path
+        android:fillColor="#83C6BD"
+        android:fillAlpha="0.75"
+        android:pathData="M45,180 m-3,0 a3,3 0,1 0,6 0 a3,3 0,1 0,-6 0"/>
+
+    <path
+        android:fillColor="#20D5D0"
+        android:fillAlpha="0.65"
+        android:pathData="M160,115 m-4,0 a4,4 0,1 0,8 0 a4,4 0,1 0,-8 0"/>
+
+    <path
+        android:fillColor="#83C6BD"
+        android:fillAlpha="0.70"
+        android:pathData="M320,330 m-3,0 a3,3 0,1 0,6 0 a3,3 0,1 0,-6 0"/>
+
+    <path
+        android:fillColor="#20D5D0"
+        android:fillAlpha="0.60"
+        android:pathData="M90,440 m-4,0 a4,4 0,1 0,8 0 a4,4 0,1 0,-8 0"/>
+
+    <path
+        android:fillColor="#83C6BD"
+        android:fillAlpha="0.70"
+        android:pathData="M180,650 m-3,0 a3,3 0,1 0,6 0 a3,3 0,1 0,-6 0"/>
+
+    <path
+        android:fillColor="#20D5D0"
+        android:fillAlpha="0.55"
+        android:pathData="M300,690 m-4,0 a4,4 0,1 0,8 0 a4,4 0,1 0,-8 0"/>
+
+</vector>

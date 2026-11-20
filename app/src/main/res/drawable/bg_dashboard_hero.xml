@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Translucent glass base with distinct hero emphasis (~85% opacity) -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="28dp"/>
+            <gradient
+                android:type="linear"
+                android:angle="0"
+                android:startColor="#E6164F59"
+                android:centerColor="#D9103B45"
+                android:endColor="#CC10252F"/>
+            <stroke
+                android:width="1.2dp"
+                android:color="#8830D5D0"/>
+        </shape>
+    </item>
+
+    <!-- Top right turquoise glow -->
+    <item
+        android:width="180dp"
+        android:height="180dp"
+        android:gravity="top|end"
+        android:right="-55dp"
+        android:top="-70dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="90dp"
+                android:centerColor="#5530D5D0"
+                android:endColor="#0030D5D0"/>
+        </shape>
+    </item>
+
+    <!-- Bottom left subtle glow -->
+    <item
+        android:width="160dp"
+        android:height="160dp"
+        android:gravity="bottom|start"
+        android:left="-60dp"
+        android:bottom="-75dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="80dp"
+                android:centerColor="#44328C89"
+                android:endColor="#00328C89"/>
+        </shape>
+    </item>
+
+</layer-list>

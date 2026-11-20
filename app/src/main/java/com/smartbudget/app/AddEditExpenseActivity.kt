@@ -2,12 +2,13 @@ package com.smartbudget.app
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import android.widget.TextView
+import com.google.android.material.appbar.MaterialToolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -36,8 +37,8 @@ class AddEditExpenseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_expense)
 
-        // Enable top ActionBar back button
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        findViewById<MaterialToolbar>(R.id.toolbarExpenseForm)
+            .setNavigationOnClickListener { finish() }
 
         // 1. Initialize ViewModels
         val db = AppDatabase.getDatabase(applicationContext)
@@ -57,6 +58,8 @@ class AddEditExpenseActivity : AppCompatActivity() {
         val spCategory = findViewById<Spinner>(R.id.spCategory)
         val btnManageCategories = findViewById<Button>(R.id.btnManageCategories)
         val btnSave = findViewById<Button>(R.id.btnSave)
+        val formTitle = findViewById<TextView>(R.id.tvExpenseFormTitle)
+        val formSubtitle = findViewById<TextView>(R.id.tvExpenseFormSubtitle)
 
         categoryAdapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_item, mutableListOf<String>()
@@ -66,8 +69,9 @@ class AddEditExpenseActivity : AppCompatActivity() {
         // 3. Check if editing an existing expense
         expenseId = intent.getIntExtra(EXTRA_EXPENSE_ID, -1)
         if (expenseId != -1) {
-            supportActionBar?.title = "Edit Expense"
-            btnSave.text = "Update Expense"
+            formTitle.text = "Edit expense"
+            formSubtitle.text = "Update the details for this transaction."
+            btnSave.text = "Update expense"
             lifecycleScope.launch {
                 val existing = viewModel.getExpenseById(expenseId)
                 if (existing != null) {
@@ -80,7 +84,9 @@ class AddEditExpenseActivity : AppCompatActivity() {
                 }
             }
         } else {
-            supportActionBar?.title = "Add Expense"
+            formTitle.text = "Add an expense"
+            formSubtitle.text = "Record a purchase and keep your budget up to date."
+            btnSave.text = "Save expense"
         }
 
         // 4. Observe categories for spinner
@@ -107,7 +113,7 @@ class AddEditExpenseActivity : AppCompatActivity() {
             val itemName = etItemName.text.toString().trim()
             val amount = etAmount.text.toString().trim().toDoubleOrNull()
 
-            if (itemName.isEmpty() || amount == null || amount <= 0.0) {
+            if (itemName.isEmpty() || amount == null || !amount.isFinite() || amount <= 0.0) {
                 Toast.makeText(this, "Enter a valid item name and amount", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -140,11 +146,4 @@ class AddEditExpenseActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
 }
