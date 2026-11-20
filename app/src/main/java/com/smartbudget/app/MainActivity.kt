@@ -18,14 +18,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.smartbudget.app.data.local.AppDatabase
 import com.smartbudget.app.data.local.entity.Expense
 import com.smartbudget.app.data.repository.ExpenseRepository
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if (isGranted) {
-            scheduleDailyReminder()
+            ReminderScheduler.schedule(this)
         }
     }
 
@@ -46,6 +42,11 @@ class MainActivity : AppCompatActivity() {
 
         checkNotificationPermissionAndSchedule()
 
+        // Demo: shows the reminder immediately (switch off in ReminderScheduler)
+        if (ReminderScheduler.SHOW_DEMO_REMINDER) {
+            ReminderScheduler.sendTestNow(this)
+        }
+
         val db = AppDatabase.getDatabase(applicationContext)
         val expenseRepository = ExpenseRepository(db.expenseDao())
         val expenseFactory = ExpenseViewModelFactory(expenseRepository)
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         val btnAddExpense = findViewById<Button>(R.id.btnAddExpense)
         val btnManage = findViewById<Button>(R.id.btnManageCategories)
         val btnDashboard = findViewById<Button>(R.id.btnDashboard)
+        val btnRates = findViewById<Button>(R.id.btnRates)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewExpenses)
         val tvEmpty = findViewById<TextView>(R.id.tvEmptyExpenses)
 
@@ -82,7 +84,8 @@ class MainActivity : AppCompatActivity() {
         btnDashboard.setOnClickListener {
             startActivity(Intent(this, DashboardActivity::class.java))
         }
-        findViewById<Button>(R.id.btnRates).setOnClickListener {
+
+        btnRates.setOnClickListener {
             startActivity(Intent(this, RatesActivity::class.java))
         }
 
@@ -118,7 +121,6 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-
     private fun checkNotificationPermissionAndSchedule() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             when {
@@ -126,25 +128,14 @@ class MainActivity : AppCompatActivity() {
                     this,
                     Manifest.permission.POST_NOTIFICATIONS
                 ) == PackageManager.PERMISSION_GRANTED -> {
-                    scheduleDailyReminder()
+                    ReminderScheduler.schedule(this)
                 }
                 else -> {
                     requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                 }
             }
         } else {
-            scheduleDailyReminder()
+            ReminderScheduler.schedule(this)
         }
-    }
-
-    private fun scheduleDailyReminder() {
-        val reminderRequest = PeriodicWorkRequestBuilder<ReminderWorker>(1, TimeUnit.DAYS)
-            .build()
-
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "DailyExpenseReminder",
-            ExistingPeriodicWorkPolicy.KEEP,
-            reminderRequest
-        )
     }
 }
