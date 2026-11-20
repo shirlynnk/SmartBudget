@@ -29,6 +29,7 @@ class ManageCategoriesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_categories)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // 1. Database -> Repository -> ViewModel
         val dao = AppDatabase.getDatabase(applicationContext).categoryDao()
@@ -111,5 +112,9 @@ class ManageCategoriesActivity : AppCompatActivity() {
             .setPositiveButton("Delete") { _, _ -> viewModel.deleteCategory(category) }
             .setNegativeButton("Cancel", null)
             .show()
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

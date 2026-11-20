@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="sb_primary">#0F766E</color>
+    <color name="sb_on_primary">#FFFFFF</color>
+    <color name="sb_primary_container">#CCFBF1</color>
+    <color name="sb_on_primary_container">#134E4A</color>
+    <color name="sb_secondary">#F59E0B</color>
+    <color name="sb_background">#F5F7F6</color>
+    <color name="sb_surface">#FFFFFF</color>
+    <color name="sb_text">#1F2937</color>
+    <color name="sb_text_muted">#6B7280</color>
 </resources>

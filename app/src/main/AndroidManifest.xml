@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -13,30 +14,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TempBudget">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:label="SmartBudget"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ManageCategoriesActivity"
-            android:exported="false"
-            android:label="Manage Categories"/>
 
         <activity
             android:name=".AddEditExpenseActivity"
             android:exported="false"
-            android:label="Add Expense"
+            android:label="Add / Edit Expense"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ManageCategoriesActivity"
+            android:exported="false"
+            android:label="Manage Categories"
             android:parentActivityName=".MainActivity" />
 
         <activity
             android:name=".DashboardActivity"
             android:exported="false"
-            android:label="Dashboard" />
+            android:label="Dashboard"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".RatesActivity"
+            android:exported="false"
+            android:label="Exchange Rates"
+            android:parentActivityName=".MainActivity" />
+
     </application>
 
 </manifest>

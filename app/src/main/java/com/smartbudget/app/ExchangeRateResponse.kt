@@ -1,8 +1,8 @@
 package com.smartbudget.app
 
-data class ExchangeRateResponse(
-    val amount: Double,
-    val base: String,
+data class ExchangeRateItem(
     val date: String,
-    val rates: Map<String, Double>
+    val base: String,
+    val quote: String,
+    val rate: Double
 )
