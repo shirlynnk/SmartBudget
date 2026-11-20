@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -46,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         checkNotificationPermissionAndSchedule()
-        fetchExchangeRates()
 
         val db = AppDatabase.getDatabase(applicationContext)
         val expenseRepository = ExpenseRepository(db.expenseDao())
@@ -84,6 +82,9 @@ class MainActivity : AppCompatActivity() {
         btnDashboard.setOnClickListener {
             startActivity(Intent(this, DashboardActivity::class.java))
         }
+        findViewById<Button>(R.id.btnRates).setOnClickListener {
+            startActivity(Intent(this, RatesActivity::class.java))
+        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -117,16 +118,6 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun fetchExchangeRates() {
-        lifecycleScope.launch {
-            try {
-                val response = RetrofitClient.instance.getLatestRates("USD")
-                Log.d("SmartBudgetAPI", "Base: ${response.base}, Date: ${response.date}, Rates: ${response.rates}")
-            } catch (e: Exception) {
-                Log.e("SmartBudgetAPI", "Failed to fetch exchange rates", e)
-            }
-        }
-    }
 
     private fun checkNotificationPermissionAndSchedule() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

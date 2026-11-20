@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/sb_background"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:padding="16dp">
@@ -21,7 +22,7 @@
 
         <Button
             android:id="@+id/btnManageCategories"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -30,23 +31,42 @@
 
         <Button
             android:id="@+id/btnDashboard"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Dashboard" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnRates"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Exchange Rates" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Recent expenses"
+        android:textColor="@color/sb_text"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_weight="1">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewExpenses"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
 
         <TextView
             android:id="@+id/tvEmptyExpenses"
@@ -54,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="No expenses yet"
+            android:textColor="@color/sb_text_muted"
             android:textSize="16sp"
             android:visibility="gone" />
     </FrameLayout>

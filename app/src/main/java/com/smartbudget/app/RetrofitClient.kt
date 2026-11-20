@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://api.frankfurter.app/"
+    private const val BASE_URL = "https://api.frankfurter.dev/"
 
     val instance: CurrencyApiService by lazy {
         Retrofit.Builder()

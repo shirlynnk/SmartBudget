@@ -147,4 +147,8 @@ class AddEditExpenseActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
 }
