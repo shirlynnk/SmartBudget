@@ -42,13 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         checkNotificationPermissionAndSchedule()
 
-
-
-        androidx.work.WorkManager.getInstance(this).enqueue(
-           androidx.work.OneTimeWorkRequestBuilder<ReminderWorker>().build()
-         )
-
-
+        // Demo: shows the reminder immediately (switch off in ReminderScheduler)
+        if (ReminderScheduler.SHOW_DEMO_REMINDER) {
+            ReminderScheduler.sendTestNow(this)
+        }
 
         val db = AppDatabase.getDatabase(applicationContext)
         val expenseRepository = ExpenseRepository(db.expenseDao())
@@ -58,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         val btnAddExpense = findViewById<Button>(R.id.btnAddExpense)
         val btnManage = findViewById<Button>(R.id.btnManageCategories)
         val btnDashboard = findViewById<Button>(R.id.btnDashboard)
+        val btnRates = findViewById<Button>(R.id.btnRates)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewExpenses)
         val tvEmpty = findViewById<TextView>(R.id.tvEmptyExpenses)
 
@@ -87,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, DashboardActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnRates).setOnClickListener {
+        btnRates.setOnClickListener {
             startActivity(Intent(this, RatesActivity::class.java))
         }
 

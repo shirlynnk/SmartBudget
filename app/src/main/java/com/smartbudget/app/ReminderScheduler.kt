@@ -2,6 +2,7 @@ package com.smartbudget.app
 
 import android.content.Context
 import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import java.util.Calendar
@@ -10,6 +11,9 @@ import java.util.concurrent.TimeUnit
 object ReminderScheduler {
 
     private const val WORK_NAME = "DailyExpenseReminder"
+
+
+    const val SHOW_DEMO_REMINDER = true
 
     fun schedule(context: Context) {
 
@@ -32,6 +36,13 @@ object ReminderScheduler {
             WORK_NAME,
             ExistingPeriodicWorkPolicy.KEEP,
             request
+        )
+    }
+
+
+    fun sendTestNow(context: Context) {
+        WorkManager.getInstance(context).enqueue(
+            OneTimeWorkRequestBuilder<ReminderWorker>().build()
         )
     }
 }
