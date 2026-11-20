@@ -1,9 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.TempBudget" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.TempBudget" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/sb_primary</item>
+        <item name="colorOnPrimary">@color/sb_on_primary</item>
+        <item name="colorPrimaryContainer">@color/sb_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/sb_on_primary_container</item>
+        <item name="colorSecondary">@color/sb_secondary</item>
+        <item name="android:windowBackground">@color/sb_background</item>
     </style>
-
-    <style name="Theme.TempBudget" parent="Base.Theme.TempBudget" />
 </resources>
